@@ -1,7 +1,7 @@
 import { CreateConfig } from "@erichardson-lee/config-ts";
 import { writeFile } from "fs/promises";
 import { join } from "path";
-import { ConfigSchema } from "../ConfigSchema";
+import { ConfigSchema } from "ConfigSchema";
 
 type Resolve<T> = T extends Promise<infer R> ? R : T;
 
@@ -16,11 +16,15 @@ async function LoadConfig(logger: (msg: string) => void) {
 }
 
 let config: Resolve<ReturnType<typeof LoadConfig>>;
-export async function SetupConfig(logger: (msg: string) => void) {
-  if (config)
+export async function SetupConfig(
+  logger: (msg: string) => void,
+  reinitialize?: boolean
+) {
+  if (config && !reinitialize)
     logger(
       "Setting up config again, ignore this message if this is intentional"
     );
+
   return (config = await LoadConfig(logger));
 }
 

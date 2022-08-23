@@ -1,4 +1,4 @@
-import { createServer, SetupConfig } from "./util";
+import { createServer, SetupConfig } from "utils";
 
 // If this module is directly called
 if (require.main === module) main();
@@ -6,7 +6,7 @@ if (require.main === module) main();
 async function main() {
   await SetupConfig(console.log);
   const f = createServer();
-  await SetupConfig((msg: string) => f.log.info(msg));
+  await SetupConfig((msg: string) => f.log.info(msg), true);
 
   f.route({
     url: "/",
