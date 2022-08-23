@@ -1,0 +1,19 @@
+{
+  "type": "object",
+  "properties": {
+    "server": {
+      "type": "object",
+      "properties": {
+        "port": {
+          "minimum": 0,
+          "maximum": 65353,
+          "title": "Port",
+          "description": "The port to listen for requests on",
+          "type": "integer"
+        }
+      },
+      "required": ["port"]
+    }
+  },
+  "required": ["server"]
+}
