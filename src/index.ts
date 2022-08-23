@@ -1,5 +1,6 @@
-import { createServer } from "./server";
-import { SetupConfig } from "./util/config";
+import { createServer, SetupConfig } from "./util";
+
+// If this module is directly called
 if (require.main === module) main();
 
 async function main() {
